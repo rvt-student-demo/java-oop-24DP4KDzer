@@ -1,5 +1,8 @@
 package rvt;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,7 +12,7 @@ public class To_Do_List {
 
         ArrayList<String> ToDo = new ArrayList<>();
     while(true){
-            System.out.print("\n\n(Quit = 'quit')\n(Print the To Do list = 'print')\n(Add to list = 'add')\nPlease input an action: ");
+            System.out.print("\n\n(Quit = 'quit')\n(Print the To Do list = 'print')\n(Add to list = 'add')\n(Save = 'save')\n(To clear tasks from saved file = 'clear')\nPlease input an action: ");
             String action = scanner.nextLine();
             System.out.println();
             clearScreen();
@@ -49,6 +52,15 @@ public class To_Do_List {
                 break;
             }
 
+
+            else if("save".equals(Action)){
+                fileManager(ToDo);
+            }
+
+            else if("clear".equals(Action)){
+                clearFile();
+            }
+
         }
     }
 
@@ -56,4 +68,28 @@ public class To_Do_List {
     System.out.print("\033[H\033[2J");
     System.out.flush();
     }
+
+
+    public static void fileManager(ArrayList<String> ToDo){
+        try (PrintWriter pWriter = new PrintWriter(new FileWriter("data/test.csv", false))){
+            for (int i = 0; i < ToDo.size(); i++) {
+                    pWriter.println(1+i + ". " + ToDo.get(i));
+                }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+
+
+    public static void clearFile(){
+        try (PrintWriter pw = new PrintWriter(new FileWriter("data/test.csv", false))){
+
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
 }

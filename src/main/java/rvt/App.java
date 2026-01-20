@@ -1,6 +1,8 @@
 package rvt;
 
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 public class App {
@@ -16,6 +18,35 @@ public class App {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+
+        try (PrintWriter pWriter = new PrintWriter("data/test.csv")) {
+            pWriter.println("3,Izpildit majas darbu");
+            pWriter.println("4,Sakopt istabu");
+
+            //pWriter.close(); ja pēc "try" ir apaļās iekavas ar objektu tad nav vajadzīga šī līnija
+
+
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+
+
+
+
+
+
+        try (PrintWriter pwriter = new PrintWriter(new FileWriter("data/test.csv", true))) {
+
+            pwriter.println("This line will be appended.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 }
