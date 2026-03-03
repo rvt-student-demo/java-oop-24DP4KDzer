@@ -12,10 +12,10 @@ public class studentRegistration {
             System.out.print("Input Your\n'Name' 'Surname'\n'Email' 'Phone'\nSeparated by ','\n>>> ");
             String input = scanner.nextLine();
             if (input.equals("stop")){
-                System.out.println("You have stopped adding names");
+                System.out.println("You have stopped adding names\n\n");
                 break;
             }
-            System.out.println("Your Data Has Been Added \n(Type 'stop' if you want to stop adding names)");
+            System.out.println("Your Data Has Been Added \n(Type 'stop' if you want to stop adding names)\n");
             vardi.add(input);
         }
 
